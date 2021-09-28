@@ -1,7 +1,3 @@
-
-
-#include <iostream>
-
 #include <iostream>
 #include <memory>
 
@@ -52,6 +48,8 @@ int main()
 	//forward reference as lvalue - copy ctor
 	//MovableInstance *ptr3 = new MovableInstance(std::forward<const MovableInstance&>(m1));
 
+        delete ptr1;
+    
 	//delete moved from m1
 	delete ptr2;
 
