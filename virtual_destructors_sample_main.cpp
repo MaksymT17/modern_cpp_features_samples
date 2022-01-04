@@ -2,6 +2,9 @@
 #include <iostream>
 #include <memory>
 
+// MV NOTE [IMPORTANT]: Deleting an object through pointer to base invokes undefined behavior unless the destructor in the base class is virtual
+// https://en.cppreference.com/w/cpp/language/destructor
+// This file shows an possible output with gcc compiler
 //compile: g++ virtual_destructors_sample_main.cpp
 
 class Base
@@ -44,7 +47,7 @@ int main()
     std::cout << "______________" << std::endl;
 
     Base *bs = new SuperClass();
-    delete bs; //dtors called: Base.
+    delete bs; //dtors called: Base. UNSAFE
     std::cout << "______________" << std::endl;
 
     Derived *ds = new SuperClass();
